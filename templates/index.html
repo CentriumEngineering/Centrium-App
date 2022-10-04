@@ -1,0 +1,179 @@
+{% extends 'base.html' %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Range Conversion Calculator{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <form action="{{ url_for('home') }}" class="form" method="POST" role="form">
+
+        <div class="row row-cols-4 p-2">
+
+            <div class="col">
+                {{form.loop(class="form-control",placeholder="loop name")}}
+
+            </div>
+        </div>
+        <div class="row row-cols-4 p-2">
+            <div class="col">
+                <label class="" for="pv1_val">PV-1 Input Value</label> {{
+                form.pv1_val(class="form-control",id="pv1_val",type="number",placeholder="PV1",value=pv1_val) }}
+            </div>
+
+            <div class="col">
+                <label class="" for="pv1_min">PV-1 Min Value</label> {{
+                form.pv1_min(class="form-control",id="pv1_min",required="required",type="number",placeholder="PV1 min
+                value") }}
+            </div>
+
+            <div class="col">
+                <label class="" for="pv1_max">PV-1 Max Value</label>
+                {{ form.pv1_max(class="form-control",id="pv1_max",required="required",type="number",placeholder="PV1 max
+                value") }}
+            </div>
+
+            <div class="col">
+                <label class="" for="pv1_unit">Engineering Unit</label>
+                {{
+                form.pv1_unit(class="form-control",id="pv1_unit",required="required",type="text",value='',placeholder="PV1
+                Engineering Unit") }}
+            </div>
+
+        </div>
+
+        <div class="row row-cols-4 p-2">
+
+            <div class="col">
+                <label class="" for="pv2_val">PV-2 Input Value</label> {{
+                form.pv2_val(class="form-control",id="pv2_val",type="number",placeholder="PV2",value=pv2_val) }}
+            </div>
+            <div class="col">
+                <label class="" for="pv2_min">PV-2 Min Value</label> {{
+                form.pv2_min(class="form-control",id="pv2_min",required="required",type="number",placeholder="PV2 min
+                value") }}
+            </div>
+            <div class="col">
+                <label class="" for="pv2_max">PV-2 Max Value</label>
+                {{ form.pv2_max(class="form-control",id="pv2_max",required="required",type="number",placeholder="PV2 max
+                value") }}
+            </div>
+
+            <div class="col">
+                <label class="" for="pv2_unit">Engineering Unit</label>
+                {{
+                form.pv2_unit(class="form-control",id="pv2_unit",required="required",type="text",value='',placeholder="PV2
+                Engineering Unit") }}
+            </div>
+
+        </div>
+
+        <div class="row row-cols-4 p-2">
+
+            <div class="col">
+                <label class="" for="pv3_val">PV-3 Input Value</label> {{
+                form.pv3_val(class="form-control",id="pv3_val",type="number",placeholder="PV3",value=pv3_val) }}
+            </div>
+            <div class="col">
+                <label class="" for="pv3_min">PV-3 Min Value</label> {{
+                form.pv3_min(class="form-control",id="pv3_min",required="required",type="number",placeholder="PV3 min
+                value") }}
+            </div>
+            <div class="col">
+                <label class="" for="pv3_max">PV-3 Max Value</label>
+                {{ form.pv3_max(class="form-control",id="pv3_max",required="required",type="number",placeholder="PV3 max
+                value") }}
+            </div>
+
+            <div class="col">
+                <label class="" for="pv3_unit">Engineering Unit</label>
+                {{
+                form.pv3_unit(class="form-control",id="pv3_unit",required="required",type="text",value='',placeholder="PV3
+                Engineering Unit") }}
+            </div>
+
+        </div>
+
+        <div class="row row-cols-4 p-2">
+            <div class="col">
+                {{
+                form.pv_select(class="form-control",id="pv_select",required="required",type="text",value='',placeholder="PV
+                selection") }}
+            </div>
+            <div class="col">
+                {{ form.submit(class="btn btn-success btn-block") }}
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<div class="container p-4">
+
+    <table class="table table-bordered table-secondary table-sm">
+   <thead>
+    <tr>
+      <th scope="col"></th>
+      <th scope="col">0%</th>
+      <th scope="col">25%</th>
+      <th scope="col">50%</th>
+      <th scope="col">75%</th>
+      <th scope="col">100%</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">PV1</th>
+       <td>{{pv1_range * 0 + pv1_min}}</td>
+      <td>{{pv1_range * 0.25 + pv1_min}}</td>
+      <td>{{pv1_range * 0.5 + pv1_min}}</td>
+      <td>{{pv1_range * 0.75 + pv1_min}}</td>
+      <td>{{pv1_range * 1.0 + pv1_min}}</td>
+    </tr>
+    <tr>
+      <th scope="row">PV2</th>
+       <td>{{pv2_range * 0 + pv2_min}}</td>
+      <td>{{pv2_range * 0.25 + pv2_min}}</td>
+      <td>{{pv2_range * 0.5 + pv2_min}}</td>
+      <td>{{pv2_range * 0.75 + pv2_min}}</td>
+      <td>{{pv2_range * 1.0 + pv2_min}}</td>
+    </tr>
+    <tr>
+      <th scope="row">PV3</th>
+       <td>{{pv3_range * 0 + pv3_min}}</td>
+      <td>{{pv3_range * 0.25 + pv3_min}}</td>
+      <td>{{pv3_range * 0.5 + pv3_min}}</td>
+      <td>{{pv3_range * 0.75 + pv3_min}}</td>
+      <td>{{pv3_range * 1.0 + pv3_min}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+{% endblock %}
+
+
+<!--  <div class="container-fluid">-->
+<!--  <div class="row">-->
+<!--<form method="POST">-->
+<!--         <div class="col-sm-3">-->
+<!--&lt;!&ndash;      <label class="form-label" for="pv1_min">PV-1 Min Value</label>&ndash;&gt;-->
+<!--          {{ form.pv1_min(class="form-control",style="inline",id="pv1_min",required="required",type="number",value=0.0,placeholder="PV1 min value") }}-->
+<!--    </div>-->
+
+<!--             <div class="col-sm-6">-->
+<!--           <label class="form-label" >       </label>-->
+<!--      <label class="form-label" for="pv1_min">PV-1 Min Value</label>-->
+
+<!--    </div>-->
+<!--        <div class="col-sm-3">-->
+<!--      <label class="form-label" for="pv1_max">PV-1 Max Value</label>-->
+<!--          {{ form.pv1_max(class="form-control",id="pv1_max",required="required",type="number",value=0.0,placeholder="PV1 max value") }}-->
+<!--    </div>-->
+<!--</form>-->
+<!--  </div>-->
+<!--    </div>-->
+
+<!--</div>-->
