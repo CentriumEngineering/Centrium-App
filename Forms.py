@@ -22,8 +22,8 @@ class Range_Form(FlaskForm):
                            validators=[DataRequired()])
 
     pv_select = SelectField(u'Calculate',
-                            choices=[(0, 'calculate PV1,PV3 given PV2'), (1, 'calculate PV2,PV3 given PV1'),
-                                     (2, 'calculate PV1,PV2 given PV3')],
+                            choices=[(0, 'Input PV2'), (1, 'Input PV1'),
+                                     (2, 'Input PV3')],
                             validators=[DataRequired()])
 
     submit = SubmitField('Submit')
